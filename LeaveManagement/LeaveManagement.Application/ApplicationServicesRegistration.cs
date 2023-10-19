@@ -5,9 +5,12 @@ namespace LeaveManagement.Application
 {
     public static class ApplicationServicesRegistration
     {
-        public static void ConfigurApplicationServices(this IServiceCollection service) 
+        public static IServiceCollection ConfigurApplicationServices(this IServiceCollection service) 
         {
             service.AddAutoMapper(Assembly.GetExecutingAssembly());
+            service.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            return service;
         }
     }
 }
