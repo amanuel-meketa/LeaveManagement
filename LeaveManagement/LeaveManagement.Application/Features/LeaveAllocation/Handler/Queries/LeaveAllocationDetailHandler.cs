@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using LeaveManagement.Application.Contracts.Persistence;
-using LeaveManagement.Application.Dtos;
+using LeaveManagement.Application.Dtos.LeaveAllocation;
 using LeaveManagement.Application.Features.LeaveAllocation.Request.Queries;
 using MediatR;
 
@@ -18,7 +18,7 @@ namespace LeaveManagement.Application.Features.LeaveAllocation.Handler.Queries
         }
         public async Task<LeaveAllocationDto> Handle(LeaveAllocationDetail request, CancellationToken cancellationToken)
         {
-            var leaveAllocation = await _leaveAllocationRepository.Get(request.Id);
+            var leaveAllocation = await _leaveAllocationRepository.GetLeaveAllocationDetail(request.Id);
             return _mapper.Map<LeaveAllocationDto>(leaveAllocation);
         }
     }

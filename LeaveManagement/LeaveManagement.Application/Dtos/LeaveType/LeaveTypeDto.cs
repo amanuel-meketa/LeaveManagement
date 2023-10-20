@@ -1,6 +1,6 @@
 ﻿using LeaveManagement.Application.Dtos.Common;
 
-namespace LeaveManagement.Application.Dtos
+namespace LeaveManagement.Application.Dtos.LeaveType
 {
     public class LeaveTypeDto : BaseDto
     {

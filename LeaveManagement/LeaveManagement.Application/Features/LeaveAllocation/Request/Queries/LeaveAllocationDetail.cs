@@ -1,4 +1,4 @@
-﻿using LeaveManagement.Application.Dtos;
+﻿using LeaveManagement.Application.Dtos.LeaveAllocation;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveAllocation.Request.Queries

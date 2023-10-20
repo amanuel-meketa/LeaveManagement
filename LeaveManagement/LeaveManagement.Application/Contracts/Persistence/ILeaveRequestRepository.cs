@@ -4,5 +4,7 @@ namespace LeaveManagement.Application.Contracts.Persistence
 {
     public interface ILeaveRequestRepository : IGenericRepository<LeaveRequest>
     {
+        Task<List<LeaveRequest>> GetLeaveRequestDetail();
+        Task<LeaveRequest> GetLeaveRequestDetail(Guid id);
     }
 }
