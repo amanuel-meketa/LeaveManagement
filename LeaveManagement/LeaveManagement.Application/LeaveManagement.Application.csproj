@@ -16,11 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\LeaveAllocation\Handler\Commands\" />
-    <Folder Include="Features\LeaveAllocation\Request\Commands\" />
-    <Folder Include="Features\LeaveRequest\Handler\Commands\" />
-    <Folder Include="Features\LeaveRequest\Request\Commands\" />
-    <Folder Include="Features\LeaveType\Handler\Commands\" />
+    <Folder Include="Features\LeaveAllocations\Handler\Commands\" />
+    <Folder Include="Features\LeaveAllocations\Request\Commands\" />
+    <Folder Include="Features\LeaveRequests\Handler\Commands\" />
+    <Folder Include="Features\LeaveRequests\Request\Commands\" />
   </ItemGroup>
 
 </Project>

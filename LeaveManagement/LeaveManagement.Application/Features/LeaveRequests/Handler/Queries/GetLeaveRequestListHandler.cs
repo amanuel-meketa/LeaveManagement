@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using LeaveManagement.Application.Contracts.Persistence;
 using LeaveManagement.Application.Dtos.LeaveRequest;
-using LeaveManagement.Application.Features.LeaveRequest.Request.Queries;
+using LeaveManagement.Application.Features.LeaveRequests.Request.Queries;
 using MediatR;
 
-namespace LeaveManagement.Application.Features.LeaveRequest.Handler.Queries
+namespace LeaveManagement.Application.Features.LeaveRequests.Handler.Queries
 {
     public class GetLeaveRequestListHandler : IRequestHandler<GetLeaveRequestList, List<LeaveRequestListDto>>
     {
