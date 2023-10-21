@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using LeaveManagement.Application.Contracts.Persistence;
 using LeaveManagement.Application.Features.LeaveRequests.Request.Commands;
-using LeaveManagement.Domain;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveRequests.Handler.Commands
 {
-    public class UpdateLeaveRequestHandler : IRequestHandler<UpdateLeaveRequest, Guid>
+    public class UpdateLeaveRequestHandler : IRequestHandler<UpdateLeaveRequest, Unit>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
         private readonly IMapper _mapper;
@@ -16,12 +15,14 @@ namespace LeaveManagement.Application.Features.LeaveRequests.Handler.Commands
             _leaveRequestRepository = leaveRequestRepository;
             _mapper = mapper;
         }
-        public async Task<Guid> Handle(UpdateLeaveRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateLeaveRequest request, CancellationToken cancellationToken)
         {
-            var leaveRequest = _mapper.Map<LeaveRequest>(request);
+
+            var leaveRequest = await _leaveRequestRepository.Get(request.updateLeaveRequestDto.Id);
+            _mapper.Map(request.updateLeaveRequestDto, leaveRequest);
             await _leaveRequestRepository.Update(leaveRequest);
 
-            return leaveRequest.Id;     
+            return Unit.Value;     
         }
     }
 }
