@@ -1,7 +1,8 @@
-﻿
+﻿using LeaveManagement.Application.Dtos.Common;
+
 namespace LeaveManagement.Application.Dtos.LeaveRequest
 {
-    public class UpdateLeaveRequestDto
+    public class UpdateLeaveRequestDto : BaseDto
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
