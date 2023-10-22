@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using LeaveManagement.Application.Contracts.Persistence;
+using LeaveManagement.Application.Dtos.LeaveAllocation.Validator;
 using LeaveManagement.Application.Features.LeaveAllocations.Request.Commands;
-using LeaveManagement.Domain;
 using MediatR;
 
 namespace LeaveManagement.Application.Features.LeaveAllocations.Handler.Commands
@@ -16,8 +16,15 @@ namespace LeaveManagement.Application.Features.LeaveAllocations.Handler.Commands
             _leaveAllocationRepository = leaveAllocationRepository;
             _mapper = mapper;
         }
+
         public async Task<Unit> Handle(UpdateLeaveAllocation request, CancellationToken cancellationToken)
         {
+            var validator = new UpdateLeaveAllocationDtoValidator();
+            var result = await validator.ValidateAsync(request.updatellocationDto);
+
+            if (!result.IsValid)
+                throw new Exception();
+
             var leaveAllocation = await _leaveAllocationRepository.Get(request.updatellocationDto.Id);
             _mapper.Map(request.updatellocationDto, leaveAllocation);
             await _leaveAllocationRepository.Update(leaveAllocation);
