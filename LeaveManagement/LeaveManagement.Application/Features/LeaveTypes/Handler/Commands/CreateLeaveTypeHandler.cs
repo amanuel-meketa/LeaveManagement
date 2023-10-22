@@ -22,7 +22,7 @@ namespace LeaveManagement.Application.Features.LeaveTypes.Handler.Commands
         {
             var validator = new CreateLeaveTypeDtoValidator();
             var validatorResult = await validator.ValidateAsync(request.leaveTypeDto);
-
+             
             if (!validatorResult.IsValid)
                 throw new Exception();
 
