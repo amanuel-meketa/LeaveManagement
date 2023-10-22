@@ -6,7 +6,7 @@ namespace LeaveManagement.Application.Contracts.Persistence
         Task<IReadOnlyList<T>> GetAll();    
         Task<T> Get(Guid id);    
         Task<T> Add(T entity);
-       // Task<bool> Exists(int id);
+        Task<bool> Exists(Guid id);
         Task Update(T entity);
         Task Delete(T entity);
     }
