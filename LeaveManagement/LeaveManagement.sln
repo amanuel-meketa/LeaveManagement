@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveManagement.Domain", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveManagement.Application", "LeaveManagement.Application\LeaveManagement.Application.csproj", "{6B2032A6-DC6C-443A-8AC9-D2AE2737692A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaveManagement.Infrastructure", "Infrastructure\LeaveManagement.Infrastructure.csproj", "{3E06223D-9BBD-4C0E-8868-75E794CB5044}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveManagement.Infrastructure", "Infrastructure\LeaveManagement.Infrastructure.csproj", "{3E06223D-9BBD-4C0E-8868-75E794CB5044}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = ".LeaveManagement.Persistence", "Persistence\.LeaveManagement.Persistence.csproj", "{563A6F06-2CEC-48F7-88E6-98A119E18B00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaveManagement.Persistence", "Persistence\LeaveManagement.Persistence.csproj", "{563A6F06-2CEC-48F7-88E6-98A119E18B00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
