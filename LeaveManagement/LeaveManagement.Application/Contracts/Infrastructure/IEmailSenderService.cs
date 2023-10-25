@@ -2,7 +2,7 @@
 
 namespace LeaveManagement.Application.Contracts.Infrastructure
 {
-    public interface IEmailService
+    public interface IEmailSenderService
     {
         Task<bool> SendEmail(Email email);
     }

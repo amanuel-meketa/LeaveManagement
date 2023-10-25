@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LeaveManagement.Application\LeaveManagement.Application.csproj" />
+  </ItemGroup>
+
 </Project>
