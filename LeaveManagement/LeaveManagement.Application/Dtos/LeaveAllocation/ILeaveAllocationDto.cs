@@ -1,7 +1,7 @@
 ﻿
 namespace LeaveManagement.Application.Dtos.LeaveAllocation
 {
-    public class CreateLeaveAllocationDto : ILeaveAllocationDto
+    public interface ILeaveAllocationDto
     {
         public int NumberOfDays { get; set; }
         public Guid LeaveTypeId { get; set; }

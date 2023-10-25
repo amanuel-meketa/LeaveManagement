@@ -3,16 +3,16 @@ using LeaveManagement.Application.Contracts.Persistence;
 
 namespace LeaveManagement.Application.Dtos.LeaveRequest.Validator
 {
-    public class CreateLeaveRequestDtoValidato : AbstractValidator<CreateLeaveRequestDto>
+    public class ILeaveRequestDtoValidator : AbstractValidator<ILeaveRequestDto>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
 
-        public CreateLeaveRequestDtoValidato(ILeaveRequestRepository leaveRequestRepository)
+        public ILeaveRequestDtoValidator(ILeaveRequestRepository leaveRequestRepository)
         {
             _leaveRequestRepository = leaveRequestRepository;
 
             RuleFor(v => v.StartDate)
-                .LessThan(s => s.EndDate).WithMessage("{PropertyName} must be less than {ComparisonValue}.");
+              .LessThan(s => s.EndDate).WithMessage("{PropertyName} must be less than {ComparisonValue}.");
 
             RuleFor(v => v.EndDate)
                 .GreaterThan(e => e.StartDate).WithMessage("{PropertyName} must be greater than {ComparisonValue}.");
@@ -21,10 +21,9 @@ namespace LeaveManagement.Application.Dtos.LeaveRequest.Validator
                 .NotNull().WithMessage("Leave type is required.")
                 .MustAsync(async (id, token) =>
                 {
-                    var isLeaverequestExist = await _leaveRequestRepository.Exists(id);
+                   var isLeaverequestExist = await _leaveRequestRepository.Exists(id);
                     return !isLeaverequestExist;
                 }).WithMessage("{PropertyName} dose not exist");
-
         }
     }
 }
