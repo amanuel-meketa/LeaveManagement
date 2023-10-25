@@ -5,6 +5,6 @@ namespace LeaveManagement.Application.Features.LeaveTypes.Request.Commands
 {
     public class UpdateLeaveType : IRequest<Unit>
     {
-        public LeaveTypeDto leaveTypeDto { get; set; }
+        public LeaveTypeDto? leaveTypeDto { get; set; }
     }
 }

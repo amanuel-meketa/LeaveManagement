@@ -5,6 +5,6 @@ namespace LeaveManagement.Application.Features.LeaveAllocations.Request.Commands
 {
     public class UpdateLeaveAllocation : IRequest<Unit>
     {
-        public UpdateLeaveAllocationDto updatellocationDto { get; set; }
+        public UpdateLeaveAllocationDto? updatellocationDto { get; set; }
     }
 }
