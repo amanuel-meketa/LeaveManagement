@@ -6,10 +6,10 @@ using SendGrid.Helpers.Mail;
 
 namespace LeaveManagement.Infrastructure.Mail
 {
-    public class EmailSender : IEmailSenderService
+    public class EmailSenderService : IEmailSenderService
     {
         private EmailSettings _emailSettings { get; }
-        public EmailSender(IOptions<EmailSettings> emailSettings)
+        public EmailSenderService(IOptions<EmailSettings> emailSettings)
         {
             _emailSettings = emailSettings.Value;
         }
