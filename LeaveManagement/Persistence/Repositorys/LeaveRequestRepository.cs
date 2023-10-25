@@ -15,7 +15,7 @@ namespace LeaveManagement.Persistence.Repositorys
         }
         public async Task ChangeApprovalStatus(LeaveRequest leaveRequest, bool ApprovalStatus)
         {
-           leaveRequest.Approved = ApprovalStatus;
+            leaveRequest.Approved = ApprovalStatus;
             _dbContext.Entry(leaveRequest).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
