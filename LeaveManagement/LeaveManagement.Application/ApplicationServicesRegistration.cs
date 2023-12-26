@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace LeaveManagement.Application
@@ -8,7 +9,7 @@ namespace LeaveManagement.Application
         public static IServiceCollection ConfigurApplicationServices(this IServiceCollection service) 
         {
             service.AddAutoMapper(Assembly.GetExecutingAssembly());
-            service.AddAutoMapper(Assembly.GetExecutingAssembly());
+            service.AddMediatR(Assembly.GetExecutingAssembly());
 
             return service;
         }

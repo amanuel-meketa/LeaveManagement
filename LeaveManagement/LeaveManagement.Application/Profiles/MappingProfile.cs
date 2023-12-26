@@ -9,7 +9,8 @@ namespace LeaveManagement.Application.Profiles
     public class MappingProfile : Profile
     {
         public MappingProfile()
-        { 
+        {
+            CreateMap<LeaveType, CreateLeaveTypeDto>().ReverseMap();
             CreateMap<LeaveAllocation, LeaveAllocationDto>().ReverseMap();
             CreateMap<LeaveRequest, LeaveRequestDto>().ReverseMap();
             CreateMap<LeaveType, LeaveTypeDto>().ReverseMap();

@@ -1,22 +1,21 @@
 ﻿using LeaveManagement.Application.Contracts.Persistence;
 using LeaveManagement.Domain;
-using LeaveManagement.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagement.Persistence.Repositorys
 {
     public class LeaveAllocationRepository : GenericRepository<LeaveAllocation>, ILeaveAllocationRepository
     {
-        private readonly LeaveManagmentDbContext _dbContext;
+        private readonly LeaveManagementDbContext _dbContext;
 
-        public LeaveAllocationRepository(LeaveManagmentDbContext dbContext) : base(dbContext)
+        public LeaveAllocationRepository(LeaveManagementDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }
 
         public async Task<List<LeaveAllocation>> GetLeaveAllocationDetail()
         {
-            var leaveAllocations = await _dbContext.leaveAllocations
+            var leaveAllocations = await _dbContext.LeaveAllocations
                  .Include(l => l.LeaveType)
                  .ToListAsync();
             return leaveAllocations;
@@ -24,7 +23,7 @@ namespace LeaveManagement.Persistence.Repositorys
 
         public async Task<LeaveAllocation> GetLeaveAllocationDetail(Guid id)
         {
-            var leaveAllocations = await _dbContext.leaveAllocations
+            var leaveAllocations = await _dbContext.LeaveAllocations
                 .Include(l => l.LeaveType)
                 .FirstOrDefaultAsync(i => i.Id == id);
 

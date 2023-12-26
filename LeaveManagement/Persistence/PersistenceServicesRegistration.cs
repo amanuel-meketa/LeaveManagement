@@ -1,5 +1,4 @@
 ﻿using LeaveManagement.Application.Contracts.Persistence;
-using LeaveManagement.Persistence.Data;
 using LeaveManagement.Persistence.Repositorys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +10,7 @@ namespace LeaveManagement.Persistence
     {
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<LeaveManagmentDbContext>(options =>
+            services.AddDbContext<LeaveManagementDbContext>(options =>
                options.UseSqlServer(
                    configuration.GetConnectionString("LeaveManagementConnectionString")));
 

@@ -1,14 +1,13 @@
 ﻿using LeaveManagement.Application.Contracts.Persistence;
-using LeaveManagement.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagement.Persistence.Repositorys
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly LeaveManagmentDbContext _dbContext;
+        private readonly LeaveManagementDbContext _dbContext;
 
-        public GenericRepository(LeaveManagmentDbContext dbContext)
+        public GenericRepository(LeaveManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }

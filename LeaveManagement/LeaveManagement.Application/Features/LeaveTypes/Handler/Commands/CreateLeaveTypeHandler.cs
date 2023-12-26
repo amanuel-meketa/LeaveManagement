@@ -4,7 +4,7 @@ using LeaveManagement.Application.Features.LeaveTypes.Request.Commands;
 using MediatR;
 using LeaveManagement.Domain;
 using LeaveManagement.Application.Dtos.LeaveType.Validator;
-using LeaveManagement.Application.Exceptions;
+using System.ComponentModel.DataAnnotations;
 
 namespace LeaveManagement.Application.Features.LeaveTypes.Handler.Commands
 {
@@ -23,9 +23,9 @@ namespace LeaveManagement.Application.Features.LeaveTypes.Handler.Commands
         {
             var validator = new CreateLeaveTypeDtoValidator();
             var validatorResult = await validator.ValidateAsync(request.leaveTypeDto);
-             
-            if (!validatorResult.IsValid)
-                throw new ValidationException(validatorResult);
+
+            //if (!validatorResult.IsValid)
+            //    throw new ValidationException(validatorResult);
 
             var leaveType = _mapper.Map<LeaveType>(request.leaveTypeDto);
                 leaveType = await _leaveTypeRepository.Add(leaveType);
