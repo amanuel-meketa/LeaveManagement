@@ -7,14 +7,14 @@ namespace LeaveManagement.Application.Dtos.LeaveType.Validator
         public ILeaveTypeDtoValidator()
         {
             RuleFor(v => v.Name)
-                .Empty().WithMessage("{PropertyName} is requierd.")
-                .NotNull()
-                .MaximumLength(50).WithMessage("{PropertyName} must not exceed {ComparisonValue} charctors.");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .MaximumLength(50).WithMessage("{PropertyName} must not exceed {MaxLength} characters.");
 
             RuleFor(v => v.DefaultDays)
-                .Empty().WithMessage("{PropertyName} is requierd.")
-                .GreaterThan(0).WithMessage("{PropertyName} must be atleast 1.")
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).WithMessage("{PropertyName} must be at least 1.")
                 .LessThan(100).WithMessage("{PropertyName} must be less than 100.");
         }
     }
+
 }

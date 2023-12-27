@@ -7,7 +7,7 @@ namespace LeaveManagement.Application.Dtos.LeaveType.Validator
         public UpdateLeaveTypeDtoValidator()
         {
             Include(new ILeaveTypeDtoValidator());
-            RuleFor(v => v.Id).NotNull().WithMessage("{PropertyName} is required.");
+            RuleFor(v => v.Id).NotNull().NotEmpty().WithMessage("{PropertyName} is required.");
         }
     }
 }

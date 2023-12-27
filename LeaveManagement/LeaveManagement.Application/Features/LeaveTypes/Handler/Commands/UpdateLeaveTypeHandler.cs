@@ -27,10 +27,14 @@ namespace LeaveManagement.Application.Features.LeaveTypes.Handler.Commands
 
             var leaveType = await _leaveTypeRepository.Get(request.leaveTypeDto.Id);
 
+            if (leaveType is null)
+                throw new NotFoundException(nameof(leaveType), request.leaveTypeDto.Id);
+
             _mapper.Map(request.leaveTypeDto, leaveType);
             await _leaveTypeRepository.Update(leaveType);
 
             return Unit.Value;
         }
+
     }
 }

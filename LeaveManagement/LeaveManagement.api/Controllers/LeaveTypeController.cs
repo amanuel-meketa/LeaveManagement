@@ -2,6 +2,7 @@
 using LeaveManagement.Application.Features.LeaveTypes.Request.Commands;
 using LeaveManagement.Application.Features.LeaveTypes.Request.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeaveManagement.Api.Controllers
@@ -52,13 +53,9 @@ namespace LeaveManagement.Api.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(Guid Guid, [FromBody] LeaveTypeDto leaveType)
+        public async Task<ActionResult> Put([FromBody] LeaveTypeDto leaveType)
         {
-            var command = new UpdateLeaveType
-            {
-                leaveTypeDto = leaveType
-            };
-            
+            var command = new UpdateLeaveType { leaveTypeDto = leaveType };
             await _mediator.Send(command);
             return NoContent();
         }
