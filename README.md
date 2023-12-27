@@ -1,4 +1,4 @@
-Leave Management solution with ASP.NET Core 7 that adheres to a clean architectural design, employs tools such as AutoMapper, 
+Leave Management solution with ASP.NET Core 8 that adheres to a clean architectural design, employs tools such as AutoMapper, 
 adopts the Mediator, Repository, and Unit of Work patterns, and follows the CQRS pattern, is a highly intricate project 
 requiring a nuanced and well-structured approach. This involves meticulously organizing the system's components, implementing 
 data mapping with AutoMapper, managing command and query responsibilities through the Mediator pattern, ensuring data access 
