@@ -18,7 +18,7 @@ namespace LeaveManagement.Application.Dtos.LeaveRequest.Validator
                 .GreaterThan(e => e.StartDate).WithMessage("{PropertyName} must be greater than {ComparisonValue}.");
 
             RuleFor(v => v.LeaveTypeId)
-                .NotNull().WithMessage("Leave type is required.")
+                .NotEmpty().WithMessage("{PropertyName} is required.")
                 .MustAsync(async (id, token) =>
                 {
                    var isLeaverequestExist = await _leaveRequestRepository.Exists(id);

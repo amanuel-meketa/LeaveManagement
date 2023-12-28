@@ -11,25 +11,27 @@ namespace LeaveManagement.Application.Features.LeaveAllocations.Handler.Commands
     public class CreateLeaveAllocationHandler : IRequestHandler<CreateLeaveAllocation, Guid>
     {
         private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
 
-        public CreateLeaveAllocationHandler(ILeaveAllocationRepository leaveAllocationRepository, IMapper mapper)
+        public CreateLeaveAllocationHandler(ILeaveAllocationRepository leaveAllocationRepository, ILeaveTypeRepository leaveTypeRepository, IMapper mapper)
         {
             _leaveAllocationRepository = leaveAllocationRepository;
+            _leaveTypeRepository = leaveTypeRepository;
             _mapper = mapper;
         }
         public async Task<Guid> Handle(CreateLeaveAllocation request, CancellationToken cancellationToken)
         {
-            var validator = new CreateLeaveAllocationDtoValidator(_leaveAllocationRepository);
+            var validator = new CreateLeaveAllocationDtoValidator(_leaveTypeRepository);
             var validatorResult = await validator.ValidateAsync(request.leaveAllocationDto);
 
             if (!validatorResult.IsValid)
                 throw new ValidationException(validatorResult);
 
-            var leaveAllocation = _mapper.Map<LeaveAllocation>(request);
-            leaveAllocation = await _leaveAllocationRepository.Add(leaveAllocation);
+            var leaveRequest = _mapper.Map<LeaveAllocation>(request.leaveAllocationDto);
+            leaveRequest = await _leaveAllocationRepository.Add(leaveRequest);
 
-            return leaveAllocation.Id;
+            return leaveRequest.Id;
         }
     }
 }

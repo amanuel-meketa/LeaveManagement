@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagement.Persistence.Migrations
 {
     [DbContext(typeof(LeaveManagementDbContext))]
-    [Migration("20231226094646_intial")]
-    partial class intial
+    [Migration("20231227192643_Intial")]
+    partial class Intial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,10 +46,7 @@ namespace LeaveManagement.Persistence.Migrations
                     b.Property<DateTime>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LeaveTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("LeaveTypeId1")
+                    b.Property<Guid>("LeaveTypeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("NumberOfDays")
@@ -60,7 +57,7 @@ namespace LeaveManagement.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LeaveTypeId1");
+                    b.HasIndex("LeaveTypeId");
 
                     b.ToTable("LeaveAllocations");
                 });
@@ -71,7 +68,7 @@ namespace LeaveManagement.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool?>("Approved")
+                    b.Property<bool>("Approved")
                         .HasColumnType("bit");
 
                     b.Property<bool>("Cancelled")
@@ -98,10 +95,7 @@ namespace LeaveManagement.Persistence.Migrations
                     b.Property<DateTime>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LeaveTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("LeaveTypeId1")
+                    b.Property<Guid>("LeaveTypeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("RequestComments")
@@ -115,7 +109,7 @@ namespace LeaveManagement.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LeaveTypeId1");
+                    b.HasIndex("LeaveTypeId");
 
                     b.ToTable("LeaveRequests");
                 });
@@ -153,7 +147,9 @@ namespace LeaveManagement.Persistence.Migrations
                 {
                     b.HasOne("LeaveManagement.Domain.LeaveType", "LeaveType")
                         .WithMany()
-                        .HasForeignKey("LeaveTypeId1");
+                        .HasForeignKey("LeaveTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("LeaveType");
                 });
@@ -162,7 +158,9 @@ namespace LeaveManagement.Persistence.Migrations
                 {
                     b.HasOne("LeaveManagement.Domain.LeaveType", "LeaveType")
                         .WithMany()
-                        .HasForeignKey("LeaveTypeId1");
+                        .HasForeignKey("LeaveTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("LeaveType");
                 });

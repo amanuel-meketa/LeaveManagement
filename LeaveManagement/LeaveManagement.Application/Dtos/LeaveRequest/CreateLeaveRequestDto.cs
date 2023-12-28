@@ -1,5 +1,4 @@
-﻿
-namespace LeaveManagement.Application.Dtos.LeaveRequest
+﻿namespace LeaveManagement.Application.Dtos.LeaveRequest
 {
     public class CreateLeaveRequestDto : ILeaveRequestDto
     {

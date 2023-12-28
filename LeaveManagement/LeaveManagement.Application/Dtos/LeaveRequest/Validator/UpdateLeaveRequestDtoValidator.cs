@@ -12,7 +12,7 @@ namespace LeaveManagement.Application.Dtos.LeaveRequest.Validator
             _leaveRequestRepository = leaveRequestRepository;
 
             Include(new ILeaveRequestDtoValidator(_leaveRequestRepository));
-            RuleFor(v => v.Id).NotNull().WithMessage("{PropertyName} is requird.");
+            RuleFor(v => v.Id).NotEmpty().WithMessage("{PropertyName} is required.");
         }
     }
 }

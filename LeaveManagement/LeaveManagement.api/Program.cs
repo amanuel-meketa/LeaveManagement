@@ -1,13 +1,11 @@
 using LeaveManagement.Application;
 using LeaveManagement.Infrastructure;
 using LeaveManagement.Persistence;
-using MediatR;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddMediatR(typeof(IMediator));
 builder.Services.ConfigurApplicationServices();
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
 builder.Services.ConfigureInfrastructureServices(builder.Configuration);

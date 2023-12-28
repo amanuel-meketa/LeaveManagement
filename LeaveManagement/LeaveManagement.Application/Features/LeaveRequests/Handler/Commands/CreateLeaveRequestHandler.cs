@@ -4,7 +4,6 @@ using LeaveManagement.Application.Contracts.Persistence;
 using LeaveManagement.Application.Dtos.LeaveRequest.Validator;
 using LeaveManagement.Application.Exceptions;
 using LeaveManagement.Application.Features.LeaveRequests.Request.Commands;
-using LeaveManagement.Application.Models;
 using LeaveManagement.Domain;
 using MediatR;
 
@@ -34,26 +33,9 @@ namespace LeaveManagement.Application.Features.LeaveRequests.Handler.Commands
             if (!validatorResult.IsValid)
                 throw new ValidationException(validatorResult);
 
-            var leaveRequest = _Mapper.Map<LeaveRequest>(request);
+            var leaveRequest = _Mapper.Map<LeaveRequest>(request.leaveRequestDto);
             leaveRequest = await _leaveRequestRepository.Add(leaveRequest);
-
-            try
-            {
-                var email = new Email
-                {
-                    To = "aman@test.com",
-                    Body = $"Your leave request for {request.leaveRequestDto.StartDate:D} to {request.leaveRequestDto.EndDate:D} " +
-                    $"has been submitted successfully.",
-                    Subject = "Leave Request Submitted"
-                };
-
-                await _emailService1.SendEmail(email);
-            }
-            catch (Exception ex)
-            {
-                //// Log or handle error, but don't throw...
-            }
-
+                
             return leaveRequest.Id;
         }
     }

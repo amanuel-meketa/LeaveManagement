@@ -22,8 +22,8 @@ namespace LeaveManagement.Application.Features.LeaveTypes.Handler.Commands
             var validator = new UpdateLeaveTypeDtoValidator();
             var validatorResult = await validator.ValidateAsync(request.leaveTypeDto);
 
-            if (!validatorResult.IsValid)
-                throw new ValidationException(validatorResult);
+            //if (!validatorResult.IsValid)
+            //    throw new ValidationException(validatorResult);
 
             var leaveType = await _leaveTypeRepository.Get(request.leaveTypeDto.Id);
 

@@ -5,26 +5,24 @@ namespace LeaveManagement.Application.Dtos.LeaveAllocation.Validator
 {
     public class ILeaveAllocationDtoValidator : AbstractValidator<ILeaveAllocationDto>
     {
-        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
 
-        public ILeaveAllocationDtoValidator(ILeaveAllocationRepository leaveAllocationRepository)
+        public ILeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
         {
-            _leaveAllocationRepository = leaveAllocationRepository;
+            _leaveTypeRepository = leaveTypeRepository;
+            RuleFor(p => p.NumberOfDays)
+                .GreaterThan(0).WithMessage("{PropertyName} must greater than {ComparisonValue}");
 
-            RuleFor(v => v.LeaveTypeId)
-                .NotNull().WithMessage("Leave type is required.");
+            RuleFor(p => p.Period)
+                .GreaterThanOrEqualTo(DateTime.Now.Year).WithMessage("{PropertyName} must be after {ComparisonValue}");
 
-            RuleFor(v => v.NumberOfDays)
-                .LessThan(1).WithMessage("{PropertyName} must be atleast 1.")
-                .GreaterThan(100).WithMessage("{PropertyName} must be atleast 100.");            
-
-            RuleFor(v => v.LeaveTypeId)
-                 .NotNull().WithMessage("Leave type is required.")
-                 .MustAsync(async (id, token) =>
-                 {
-                     var isLeaveAllocationExist = await _leaveAllocationRepository.Exists(id);
-                     return !isLeaveAllocationExist;
-                 }).WithMessage("{PropertyName} dose not exist");
+            RuleFor(p => p.LeaveTypeId)
+                .MustAsync(async (id, token) =>
+                {
+                    var leaveTypeExists = await _leaveTypeRepository.Exists(id);
+                    return leaveTypeExists;
+                })
+                .WithMessage("{PropertyName} does not exist.");
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace LeaveManagement.Domain.Common
+﻿namespace LeaveManagement.Domain.Common
 {
     public abstract class BaseEntity
     {

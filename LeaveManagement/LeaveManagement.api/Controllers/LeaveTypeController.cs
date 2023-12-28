@@ -2,12 +2,11 @@
 using LeaveManagement.Application.Features.LeaveTypes.Request.Commands;
 using LeaveManagement.Application.Features.LeaveTypes.Request.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeaveManagement.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class LeaveTypeController : ControllerBase
     {
