@@ -1,6 +1,1 @@
-Leave Management solution with ASP.NET Core 8 that adheres to a clean architectural design, employs tools such as AutoMapper, 
-adopts the Mediator, Repository, and Unit of Work patterns, and follows the CQRS pattern, is a highly intricate project 
-requiring a nuanced and well-structured approach. This involves meticulously organizing the system's components, implementing 
-data mapping with AutoMapper, managing command and query responsibilities through the Mediator pattern, ensuring data access 
-and modification conform to the Repository and Unit of Work patterns, and utilizing the CQRS pattern to optimize data retrieval
- and modification processes. This comprehensive approach aims to deliver a maintainable Leave Management system.
+The Leave Management Software adopts Clean Architecture to ensure separation of concerns and flexibility, organizing the application into layers for simple maintenance and testing. Furthermore, it integrates CORS for secure cross-origin requests and middleware like Mediator pattern. By incorporating the Mediator pattern, the software centralizes communication between components, promoting loose coupling and scalability. This comprehensive approach enhances the software's functionality and adaptability in managing employee leave effectively.
